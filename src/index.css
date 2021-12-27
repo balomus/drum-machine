@@ -18,8 +18,14 @@ body {
 }
 
 .button {
+  display: flex;
   border: 1px solid pink;
   width: 30%;
+  height: 30%;
+  /* justify-items: center; */
+  align-items: center;
+  justify-content: center;
+  
 }
 
 #drum-pad {
@@ -28,4 +34,5 @@ body {
   justify-content: space-evenly;
   width: 50em;
   height: 50em;
+  align-items: center;
 }
