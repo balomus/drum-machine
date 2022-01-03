@@ -182,6 +182,7 @@ function App() {
   const [selectedBank, setSelectedBank] = useState(false);
   const [power, setPower] = useState(true);
   const [volume, setVolume] = useState('0.3');
+  const [display, setDisplay] = useState(".");
 
   const updateBank = () => {
     if (power == false) {
@@ -239,12 +240,28 @@ function App() {
     }
   });
 
+  useEffect(() => {
+    setDisplay("Volume " + Math.round(volume * 100));
+  }, [volume]);
+
+  useEffect(() => {
+    if (selectedBank == false)
+    {
+      setDisplay("Heater Kit");
+    }
+    else
+    {
+      setDisplay("Smooth Piano Kit");
+    }
+  }, [currentBank])
+
   const playSound = (element) => {
     // console.log(power);
     element.volume = volume;
     console.log('Setting volume to ' + volume);
     element.currentTime = 0;
     element.play();
+    setDisplay(element.id);
   }
 
   // useEffect(() => {
@@ -256,7 +273,7 @@ function App() {
     <div className="App wrapper" id="drum-machine">
       <div className="container">
         <DrumPad currentBank={currentBank} playSound={playSound}></DrumPad>
-        <Controls power={power} setPower={setPower} currentBank={currentBank} setBank={setBank} bankEmpty={bankEmpty} volume={volume} setVolume={setVolume} bankOne={bankOne} bankTwo={bankTwo} selectedBank={selectedBank} setSelectedBank={setSelectedBank}></Controls>
+        <Controls power={power} setPower={setPower} currentBank={currentBank} setBank={setBank} bankEmpty={bankEmpty} volume={volume} setVolume={setVolume} bankOne={bankOne} bankTwo={bankTwo} selectedBank={selectedBank} setSelectedBank={setSelectedBank} display={display} setDisplay={setDisplay}></Controls>
       </div>
     </div>
   );
