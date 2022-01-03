@@ -179,6 +179,7 @@ function App() {
   ];
 
   const [currentBank, setBank] = useState(bankOne);
+  const [selectedBank, setSelectedBank] = useState(false);
   const [power, setPower] = useState(true);
   const [volume, setVolume] = useState('0.3');
 
@@ -209,8 +210,17 @@ function App() {
     // document.addEventListener('keydown', logKeyDown);
     if (power === true)
     {
-      setBank(bankOne);
-      console.log(currentBank);
+      if (selectedBank == false)
+      {
+        setBank(bankOne);
+        console.log(currentBank);
+      }
+      else
+      {
+        setBank(bankTwo);
+        console.log(currentBank);
+      }
+      
     }
     else{
       setBank(bankEmpty);
@@ -246,7 +256,7 @@ function App() {
     <div className="App wrapper" id="drum-machine">
       <div className="container">
         <DrumPad currentBank={currentBank} playSound={playSound}></DrumPad>
-        <Controls power={power} setPower={setPower} currentBank={currentBank} setBank={setBank} bankEmpty={bankEmpty} volume={volume} setVolume={setVolume}></Controls>
+        <Controls power={power} setPower={setPower} currentBank={currentBank} setBank={setBank} bankEmpty={bankEmpty} volume={volume} setVolume={setVolume} bankOne={bankOne} bankTwo={bankTwo} selectedBank={selectedBank} setSelectedBank={setSelectedBank}></Controls>
       </div>
     </div>
   );

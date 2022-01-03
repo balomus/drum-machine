@@ -8,14 +8,31 @@ const Controls = (props) => {
         }
         else 
         {
-            console.log("setting bank to currentBank" + props.currentBank)
-            props.setBank(props.currentBank);
+            // console.log("setting bank to currentBank" + props.currentBank)
+            if (props.selectedBank == false)
+            {
+                console.log("setting bank to bankOne");
+                props.setBank(props.bankOne);
+            }
+            else
+            {
+                console.log("setting bank to bankTwo");
+                props.setBank(props.bankTwo);
+            }
         }
         props.setPower(!props.power);
     }
 
-    const toggleBank = (e) => {
-        console.log(e.target.value);
+    const toggleBank = () => {
+        if (props.selectedBank == true)
+        {
+            props.setBank(props.bankOne);
+        }
+        else if (props.selectedBank == false)
+        {
+            props.setBank(props.bankTwo);
+        }
+        props.setSelectedBank(!props.selectedBank);
     }
 
     const updateVolume = (e) => {
@@ -38,10 +55,10 @@ const Controls = (props) => {
                 Volume: {props.volume}
             </div> 
             <div>Bank</div>
-            {/* <label className="switch">
-                <input type="checkbox" checked={false} onChange={toggleBank}/>
+            <label className="switch">
+                <input type="checkbox" checked={props.selectedBank} onChange={toggleBank}/>
                 <span className="slider"></span>
-            </label> */}
+            </label>
         </div>
      );
 }
