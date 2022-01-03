@@ -184,22 +184,13 @@ function App() {
   const [volume, setVolume] = useState('0.3');
   const [display, setDisplay] = useState(".");
 
-  const updateBank = () => {
-    if (power == false) {
-
-    }
-  }
-
   const logKeyDown = (e) => {
-    console.log(e.keyCode);
     for (var i = 0; i < currentBank.length; i++)
     {
       if (e.keyCode === currentBank[i].keyCode)
       {
-        // console.log("power is set to " + power.toString());
         if (power == true)
         {
-          // console.log("volume is set to " + volume);
           playSound(document.getElementById(currentBank[i].id))
         }
       }
@@ -207,30 +198,20 @@ function App() {
   }
 
   useEffect(() => {
-    console.log("useEffect ran");
-    // document.addEventListener('keydown', logKeyDown);
     if (power === true)
     {
       if (selectedBank == false)
       {
         setBank(bankOne);
-        console.log(currentBank);
       }
       else
       {
         setBank(bankTwo);
-        console.log(currentBank);
       }
-      
     }
     else{
       setBank(bankEmpty);
-      console.log(currentBank);
     }
-    // return () => {
-    //   console.log('Component unmounted? removed event listener');
-    //   document.removeEventListener('keydown', logKeyDown);
-    // }
   }, [power]);
 
   useEffect(() => {
@@ -256,18 +237,17 @@ function App() {
   }, [currentBank])
 
   const playSound = (element) => {
-    // console.log(power);
     element.volume = volume;
-    console.log('Setting volume to ' + volume);
     element.currentTime = 0;
     element.play();
     setDisplay(element.id);
+    element.parentElement.style.backgroundColor = "red";
+    element.parentElement.style.color = "white";
+    setTimeout(() => {
+      element.parentElement.style.backgroundColor = "white";
+      element.parentElement.style.color = "black";
+    }, 100);
   }
-
-  // useEffect(() => {
-  //   console.log('useEffect #2 ran, added event listener ');
-  //   document.addEventListener('keydown', logKeyDown);
-  // }, []);
 
   return (
     <div className="App wrapper" id="drum-machine">

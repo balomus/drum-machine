@@ -10,11 +10,6 @@ const DrumPad = ({currentBank, playSound}) => {
                     <Button button={current.button} id={current.id} key={current.id} playSound={playSound} url={current.url}></Button>
                 )
             })}
-            {/* {currentBank.map((value) => {
-                return (
-                    <Button button={value.button} id={value.id} key={value.id} playSound={playSound}/>
-                )
-            })} */}
         </div>
      );
 }
