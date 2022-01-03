@@ -14,6 +14,16 @@ const Controls = (props) => {
         props.setPower(!props.power);
     }
 
+    const toggleBank = (e) => {
+        console.log(e.target.value);
+    }
+
+    const updateVolume = (e) => {
+        // console.log(e.target.value);
+        props.setVolume(e.target.value);
+        
+    }
+
     return ( 
         <div id="controls">
             <div>Power</div>
@@ -23,6 +33,15 @@ const Controls = (props) => {
             </label>
             <div>Power is set to {props.power.toString()}</div>
             <div id="display">Display goes here</div>
+            <div>
+                <input type="range" step="0.01" min="0" max="1" value={props.volume} onChange={updateVolume}></input>
+                Volume: {props.volume}
+            </div> 
+            <div>Bank</div>
+            {/* <label className="switch">
+                <input type="checkbox" checked={false} onChange={toggleBank}/>
+                <span className="slider"></span>
+            </label> */}
         </div>
      );
 }

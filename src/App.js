@@ -180,6 +180,7 @@ function App() {
 
   const [currentBank, setBank] = useState(bankOne);
   const [power, setPower] = useState(true);
+  const [volume, setVolume] = useState('0.3');
 
   const updateBank = () => {
     if (power == false) {
@@ -191,17 +192,22 @@ function App() {
     console.log(e.keyCode);
     for (var i = 0; i < currentBank.length; i++)
     {
-      if (e.keyCode == currentBank[i].keyCode)
+      if (e.keyCode === currentBank[i].keyCode)
       {
-        playSound(document.getElementById(currentBank[i].id))
+        // console.log("power is set to " + power.toString());
+        if (power == true)
+        {
+          // console.log("volume is set to " + volume);
+          playSound(document.getElementById(currentBank[i].id))
+        }
       }
     }
   }
 
   useEffect(() => {
     console.log("useEffect ran");
-    document.addEventListener('keydown', logKeyDown);
-    if (power == true)
+    // document.addEventListener('keydown', logKeyDown);
+    if (power === true)
     {
       setBank(bankOne);
       console.log(currentBank);
@@ -216,8 +222,17 @@ function App() {
     // }
   }, [power]);
 
+  useEffect(() => {
+    document.addEventListener('keydown', logKeyDown);
+    return () => {
+      document.removeEventListener('keydown', logKeyDown);
+    }
+  });
+
   const playSound = (element) => {
-    console.log(power);
+    // console.log(power);
+    element.volume = volume;
+    console.log('Setting volume to ' + volume);
     element.currentTime = 0;
     element.play();
   }
@@ -231,7 +246,7 @@ function App() {
     <div className="App wrapper" id="drum-machine">
       <div className="container">
         <DrumPad currentBank={currentBank} playSound={playSound}></DrumPad>
-        <Controls power={power} setPower={setPower} currentBank={currentBank} setBank={setBank} bankEmpty={bankEmpty}></Controls>
+        <Controls power={power} setPower={setPower} currentBank={currentBank} setBank={setBank} bankEmpty={bankEmpty} volume={volume} setVolume={setVolume}></Controls>
       </div>
     </div>
   );
