@@ -2,6 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  input:checked ~ .dot {
+    transform: translateX(100%);
+    background-color: #374151;
+  }
+
+  input[type="range"]::-webkit-slider-thumb {
+    width: 15px;
+    -webkit-appearance: none;
+    appearance: none;
+    height: 15px;
+    /* cursor: ew-resize; */
+    background: #374151;
+    box-shadow: -405px 0 0 400px #605E5C;
+    border-radius: 50%;
+}
+}
+
 @layer components {
   .wrapper {
     @apply h-screen bg-gray-700 flex flex-col justify-center items-center text-center;
@@ -13,10 +31,19 @@
     @apply grid gap-2 grid-cols-3 content-center;
   }
   .button {
-    @apply rounded-lg bg-gray-900 text-white text-6xl h-32 md:h-32 lg:h-36 xl:h-44 flex items-center justify-center;
+    @apply rounded-lg bg-gray-900 text-white text-6xl h-32 md:h-32 lg:h-36 xl:h-36 2xl:h-44 flex items-center justify-center;
   }
   .controls {
-    @apply flex items-center;
+    @apply flex items-center flex-col justify-center text-2xl text-white;
+  }
+  .switch-line {
+    @apply block bg-gray-600 w-14 h-8 rounded-full;
+  }
+  .switch-dot {
+    @apply dot absolute left-1 top-1 bg-white w-6 h-6 rounded-full transition;
+  }
+  .range-slider {
+    @apply rounded-lg overflow-hidden appearance-none bg-gray-400 h-3 w-64;
   }
 }
 

@@ -189,7 +189,7 @@ function App() {
     {
       if (e.keyCode === currentBank[i].keyCode)
       {
-        if (power == true)
+        if (power === true)
         {
           playSound(document.getElementById(currentBank[i].id))
         }
@@ -200,7 +200,7 @@ function App() {
   useEffect(() => {
     if (power === true)
     {
-      if (selectedBank == false)
+      if (selectedBank === false)
       {
         setBank(bankOne);
       }
@@ -226,7 +226,7 @@ function App() {
   }, [volume]);
 
   useEffect(() => {
-    if (selectedBank == false)
+    if (selectedBank === false)
     {
       setDisplay("Heater Kit");
     }
@@ -241,11 +241,11 @@ function App() {
     element.currentTime = 0;
     element.play();
     setDisplay(element.id);
-    element.parentElement.style.backgroundColor = "red";
-    element.parentElement.style.color = "white";
+    element.parentElement.style.backgroundColor = "#4B5563";
+    // element.parentElement.style.color = "white";
     setTimeout(() => {
-      element.parentElement.style.backgroundColor = "white";
-      element.parentElement.style.color = "black";
+      element.parentElement.style.backgroundColor = "#111827";
+      // element.parentElement.style.color = "black";
     }, 100);
   }
 
