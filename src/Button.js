@@ -6,7 +6,7 @@ const Button = (props) => {
 
     return ( 
         <div className="button" onClick={handleClick}>
-            {props.button}<br></br>
+            {props.button}
             <audio id={props.id} src={`${props.url}`}></audio>
         </div>
      );

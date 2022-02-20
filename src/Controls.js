@@ -37,7 +37,7 @@ const Controls = (props) => {
     }
 
     return ( 
-        <div id="controls">
+        <div id="controls" class="controls">
             <div>Power</div>
             <label className="switch">
                 <input type="checkbox" checked={props.power} onChange={togglePower}/>

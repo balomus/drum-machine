@@ -1,5 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .wrapper {
+    @apply h-screen bg-gray-700 flex flex-col justify-center items-center text-center;
+  }
+  .main-grid {
+    @apply container grid gap-2 grid-cols-1 md:grid-cols-2 mx-auto px-8 lg:px-32 xl:px-60;
+  }
+  .drumpad-grid {
+    @apply grid gap-2 grid-cols-3 content-center;
+  }
+  .button {
+    @apply rounded-lg bg-gray-900 text-white text-6xl h-32 md:h-32 lg:h-36 xl:h-44 flex items-center justify-center;
+  }
+  .controls {
+    @apply flex items-center;
+  }
+}
+
 /* 0 - 965px */
-@media (max-width: 965px) {
+/* @media (max-width: 965px) {
   .container {
     max-width: 100%;
   }
@@ -20,9 +42,9 @@
     display: flex;
     margin: 1em;
   }
-}
+} */
 /* 965px+ */
-@media (min-width: 965px) {
+/* @media (min-width: 965px) {
   .container {
     max-width: 70em;
   }
@@ -88,10 +110,10 @@ body {
 
 #display {
   text-align: center;
-}
+} */
 
 /* Toggle Switch CSS from here: https://www.w3schools.com/howto/howto_css_switch.asp */
-.switch {
+/* .switch {
   position: relative;
   display: inline-block;
   width: 60px;
@@ -140,5 +162,5 @@ input:checked + .slider:before {
   -webkit-transform: translateX(26px);
   -ms-transform: translateX(26px);
   transform: translateX(26px);
-}
+} */
 /* END Toggle Switch CSS */

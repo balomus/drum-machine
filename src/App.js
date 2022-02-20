@@ -251,7 +251,7 @@ function App() {
 
   return (
     <div className="App wrapper" id="drum-machine">
-      <div className="container">
+      <div className="main-grid">
         <DrumPad currentBank={currentBank} playSound={playSound}></DrumPad>
         <Controls power={power} setPower={setPower} currentBank={currentBank} setBank={setBank} bankEmpty={bankEmpty} volume={volume} setVolume={setVolume} bankOne={bankOne} bankTwo={bankTwo} selectedBank={selectedBank} setSelectedBank={setSelectedBank} display={display} setDisplay={setDisplay}></Controls>
       </div>
