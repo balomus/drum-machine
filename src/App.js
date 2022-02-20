@@ -242,10 +242,8 @@ function App() {
     element.play();
     setDisplay(element.id);
     element.parentElement.style.backgroundColor = "#4B5563";
-    // element.parentElement.style.color = "white";
     setTimeout(() => {
       element.parentElement.style.backgroundColor = "#111827";
-      // element.parentElement.style.color = "black";
     }, 100);
   }
 
